@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <link rel="stylesheet" th:href="@{/css/chat.css}" />
+    <body>
+        <header th:replace="layout/layoutComun :: header"></header>
+
+        <div class="container-fluid py-4">
+            <div class="card bg-light w-75 p-3">
+                <div class="card-header">
+                    <h4 class="text-center" th:text="#{text.eventos.salaEvento} + ${eventoFinalUser.sala.nombre}"></h4>
+                    <div style="display: flex; justify-content: space-around;">
+                        <div th:text="#{text.reunion.nombre} + ${eventoFinalUser.titulo}"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="bg-warning" th:text="#{text.reunion.archivos}"></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div th:if="${not#lists.isEmpty(files)}">
+                                    <div th:each="archivo : ${files}">
+                                        <a th:href="${archivo.url}" th:text="${archivo.filename}"></a>
+                                    </div>
+                                </div>
+                                <div th:unless="${not#lists.isEmpty(files)}">
+                                    <div><h5 th:text="#{text.reunion.noArchivos}"></h5></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

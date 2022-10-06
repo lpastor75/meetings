@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<link rel="stylesheet" th:href="@{/css/chat.css}" />
+<body onload="probar()">
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+
+		<div class="card bg-light w-100 p-3">
+			<div class="card-header">
+				<h4 class="text-center" style="font-weight: bold;"
+					th:text="#{text.eventos.salaEvento} + ${eventoFinalUser.sala.nombre}"></h4>
+				<div style="display: flex; justify-content: space-around">
+					<div
+						th:text="'Inicio de la reunión:  ' +${#temporals.format(eventoFinalUser.horarioDefinitivo,'dd-MM-yyyy HH:mm')}">
+					</div>
+					<br>
+
+					<div
+						th:text="'Final de la reunión:  ' + ${#temporals.format(eventoFinalUser.horarioDefinitivoFin,'dd-MM-yyyy HH:mm')}"
+						id="terminaReunion"></div>
+				</div>
+			</div>
+			<div class="card-body">
+
+
+				<div class="container">
+					<div class="row">
+						<div class="col-8">
+							<h3 class="bg-warning" th:text=#{text.reunion.archivos}></h3>
+						</div>
+						<div class="col text-center">
+							<h3 class="bg-warning" th:text=#{text.reunion.chat}></h3>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-8">							
+							<div class="table-responsive" style="height: 300px; margin-top: 30px;" th:if="${not #lists.isEmpty(files)}">
+							<input type="hidden" th:field="*{id}" />
+
+							<table class="table table-striped table-bordered">
+								<thead class="thead-inverse">
+									<tr class="text-center table-success">
+										<th th:text="Nombre"></th>
+										<th th:if="${eventoFinalUser.organizador.id == usuario.id}"
+											th:text="Eliminar"></th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<tr th:each="file : ${files}">
+
+										<td class="text-center" th:text="${file.filename}"></td>
+										<td th:if="${eventoFinalUser.organizador.id == usuario.id}"
+											class="text-center"><a class="btn btn-danger btn-xs"
+											th:href="@{/eventos/eliminarArchivo/} + ${file.idFile}"
+											onclick="return confirm('Estas seguro que quieres eliminar el archivo?');"><i
+												class="fas fa-trash"></i></a></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+													
+							</div>
+							
+							<div th:unless="${not#lists.isEmpty(files)}">
+
+								<div>
+									<h5 th:text=#{text.reunion.noArchivos}></h5>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="table-responsive" style="height: 300px; margin-top: 30px;" th:if="${not #lists.isEmpty(mensajes)}">
+
+							<input type="hidden" th:field="*{id}" />
+
+							<table class="table table-striped table-bordered">
+								<thead class="thead-inverse">
+									<tr class="text-center table-success">
+										<th th:text=#{text.formulario.username}></th>
+										<th th:text=#{text.reunion.mensaje}></th>
+										<th th:if="${eventoFinalUser.organizador.id == usuario.id}"
+											th:text=#{text.usuario.eliminar}></th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<tr th:each="mensaje : ${mensajes}">
+
+										<td class="text-center" th:text="${mensaje.username}"></td>
+										<td class="text-center" th:text="${mensaje.content}"></td>
+										<td th:if="${eventoFinalUser.organizador.id == usuario.id}"
+											class="text-center"><a class="btn btn-danger btn-xs"
+											th:href="@{/eventos/eliminarMensaje/} + ${mensaje.id}"
+											onclick="return confirm('Estas seguro que quieres eliminar?');"><i
+												class="fas fa-trash"></i></a></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+	<!-- https://cdnjs.com/libraries/sockjs-client -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<!-- https://cdnjs.com/libraries/stomp.js/ -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

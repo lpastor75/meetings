@@ -1,0 +1,124 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    /*     overflow: hidden; */
+}
+
+.nickname {
+    color: blue;
+    margin-right: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.user-container {
+    float: right;
+    margin-right: 10px;
+    color: #800040;
+    font-weight: bold;
+}
+
+#chat-container #messageForm {
+    padding: 20px;
+}
+
+#chat-titulo {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: 2rem;
+}
+
+#chat-container {
+	position: relative;
+    height: 100%;
+    border: 2px solid #d5dbdb;
+    background-color: #b3ecf7;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 15px;
+    width: 350px;
+    max-width: 380px;
+    height: 300px;
+    max-height: 600px;
+    position: relative;
+}
+
+#chat-container ul {
+    list-style-type: none;
+    background-color: #fff;
+    margin: 0;
+    overflow: auto;
+    overflow-y: scroll;
+    padding: 0 20px 0px 20px;
+    height: calc(100% - 150px);
+}
+
+#chat-container #messageForm {
+    padding: 20px;
+}
+
+#chat-container ul li {
+    line-height: 1.5rem;
+    padding: 10px 15px;
+    margin: 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+#chat-container ul li p {
+    margin: 0;
+}
+
+#chat-container .event-message {
+    width: 100%;
+    text-align: center;
+    clear: both;
+}
+
+#chat-container .event-message p {
+    color: #777;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+#chat-container .chat-message {
+    position: relative;
+}
+
+#messageForm .input-message {
+    float: left;
+    width: 300px;
+}
+
+#messageForm .input-message #message {
+    margin-left: 5px;
+}
+
+.connecting {
+    text-align: center;
+    color: #0000a0;
+    width: 100%;
+}
+
+.table-responsive {
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#nick {
+    color: #0000dd;
+    font-weight: bold;
+}
+
+#reunion-container {
+    border: 1px dotted grey;
+    padding: 5px;
+}

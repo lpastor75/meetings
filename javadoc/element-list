@@ -1,0 +1,11 @@
+practica.tecnologias.web.app
+practica.tecnologias.web.app.auth.handler
+practica.tecnologias.web.app.controllers
+practica.tecnologias.web.app.exceptions
+practica.tecnologias.web.app.interceptor
+practica.tecnologias.web.app.listener
+practica.tecnologias.web.app.models.dao
+practica.tecnologias.web.app.models.entity
+practica.tecnologias.web.app.models.service
+practica.tecnologias.web.app.utils
+practica.tecnologias.web.app.utils.paginator

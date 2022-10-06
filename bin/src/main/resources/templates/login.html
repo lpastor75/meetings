@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="">
+	
+		<header th:replace="layout/layout :: header"></header>
+
+		 <div class="grid">
+
+    <div id="login">
+
+      <h2><span class="fontawesome-lock" th:text="#{text.login.titulo}"></span></h2>
+
+      <form th:action="@{/login}" method="post">
+
+        <fieldset>
+
+          <p><label for="name" th:text="#{text.login.usuario}"></label></p>
+          <p><input type="text" id="name" name="username" th:placeholder="#{text.login.usuario}" autofocus required></p>
+
+          <p><label for="password" th:text="#{text.login.password}"></label></p>
+          <p><input type="password" id="password" name="password" th:placeholder="#{text.login.password}" required></p>
+
+          <p><input type="submit" th:value="#{text.login.boton}" ></p>
+
+        </fieldset>
+			
+      </form>
+
+    </div> <!-- end login -->
+
+  </div>
+	
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

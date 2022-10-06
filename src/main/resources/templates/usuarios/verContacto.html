@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="form-group row row justify-content-center"></div>
+        <div class="container py-4">
+            <div class="card bg-light">
+                <div class="card-header text-center" style="font-weight: bold; font-size: 1.3rem;" id="detalle_contacto" th:text="${titulo}"></div>
+                <div class="card-body">
+                    <img class="img-thumbnail rounded float-left" style="max-width: 150px;" th:src="@{/images/image28.jpg}" th:alt="Imagen" />
+
+                    <table style="max-width: 70%;" class="table table-striped table-bordered float-right">
+                        <tr>
+                            <td style="font-weight: bold;" th:text="#{text.usuario.nombre}"></td>
+                            <td th:text="${contacto.alias}"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;" th:text="#{text.usuario.email}"></td>
+                            <td th:text="${contacto.email}"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;" th:text="#{text.formulario.fecha}"></td>
+                            <td th:text="${#dates.format(contacto.createAt, 'dd-MMM-yyyy')}"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-footer">
+                    <a class="btn btn-info btn-xs float-left" href="javascript:history.back();" title="back"><i class="fas fa-arrow-circle-left mx-2"></i><span th:text="#{text.eventos.volver}"></span></a>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

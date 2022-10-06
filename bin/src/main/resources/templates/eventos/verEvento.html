@@ -1,0 +1,138 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" style="font-weight: bold;"
+				th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-titulo">
+					<a th:href="@{/}" class="btn btn-light btn-xs"><i
+						class="fas fa-angle-double-left" style="margin-right: 5px;"></i><i
+						class="fa fa-home fa-lg" style="margin-right: 5px; color: black"></i>
+						<span th:text=#{text.menu.home}></span></a>
+				</h4>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-primary"
+						th:text="#{text.eventos.datosOrganizador}"></li>
+					<li class="list-group-item"
+						th:text="${evento.organizador.nombre + ' ' + evento.organizador.apellido }"></li>
+					<li class="list-group-item" th:text="${evento.organizador.email}"></li>
+				</ul>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-success"
+						th:text=#{text.eventos.cabeceraEvento}></li>
+					<li class="list-group-item"
+						th:text="#{text.eventos.titulo} + ': ' + ${evento.titulo}"></li>
+					<li class="list-group-item"
+						th:text="#{text.eventos.descripcion} + ': ' + ${evento.descripcion}"></li>
+				</ul>
+
+				<h4 class="text-center my-4" style="font-weight: bold;"
+					th:text=#{text.eventos.horariosDisponibles}></h4>
+
+				<div class="alert alert-info my-4"
+					th:if="${#lists.isEmpty(evento.horariosDisponibles)}"
+					th:text="#{text.alert.noHorariosDisponibles} + ${evento.titulo}"></div>
+
+				<table th:if="${not #lists.isEmpty(evento.horariosDisponibles)}"
+					class="table table-striped table-hover table-bordered my-3">
+					<thead class="text-center table-success">
+						<tr>
+							<th th:text=#{text.eventos.fecha}></th>
+							<th th:text=#{text.eventos.duracion}></th>
+							<th th:text=#{text.eventos.horaInicio}></th>
+							<th th:text=#{text.eventos.horaFin}></th>
+
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr th:each="horario: ${evento.horariosDisponibles}">
+							<td
+								th:text="${#temporals.format(horario.horarioFlow,'dd-MM-yyyy')}"></td>
+							<td th:text="${evento.duracion} + ' horas' "></td>
+							<td th:text="${#temporals.format(horario.horarioFlow,'HH:mm')}"></td>
+							<td th:text="${#temporals.format(horario.horaFin,'HH:mm')}"></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<div
+					th:text="#{text.eventos.fechaTope} + ': ' +  ${#temporals.format(evento.fechaLimite, 'dd-MM-yyyy')}">
+				</div>
+
+				<h4 class="text-center my-4" style="font-weight: bold;"
+					th:text=#{text.usuariosRegistrados}></h4>
+
+				<form th:action="@{/eventos/verEvento-add}"
+					name="formularioUsuarios" th:object="${evento}" method="post">
+					<div class="float-right" style="margin-bottom: 10px;">
+
+						<a class="btn btn-info btn-sm"
+							style="margin-left: 10px; margin-right: 10px;"
+							href="javascript:seleccionar_todo()" th:text=#{text.marcarTodos}></a>
+						<a class="btn btn-info btn-sm"
+							href="javascript:deseleccionar_todo()"
+							th:text=#{text.quitarTodos}></a>
+					</div>
+					<div class="table-responsive"
+						style="height: 300px; margin-top: 30px;"
+						th:if="${not #lists.isEmpty(listaRegistrados)}">
+
+						<input type="hidden" th:field="*{id}" />
+
+						<table class="table table-striped table-bordered">
+							<thead class="thead-inverse">
+								<tr class="text-center table-success">
+									<th th:text=#{text.usuario.nombre}></th>
+									<th th:text=#{text.usuario.apellido}></th>
+									<th th:text=#{text.usuario.email}></th>
+									<th th:text=#{text.eventos.invitar}></th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<tr th:each="usuario : ${listaRegistrados}">
+
+									<td class="text-center" th:text="${usuario.nombre}"></td>
+									<td class="text-center" th:text="${usuario.apellido}"></td>
+									<td class="text-center" th:text="${usuario.email}"></td>
+
+									<td class="text-center"><input type="checkbox"
+										th:field="*{registrados}" th:value="${usuario.id}"></td>
+
+								</tr>
+
+							</tbody>
+
+						</table>
+
+					</div>
+					<div class="text-center my-3">
+						<input class="btn btn-success" type="submit"
+							th:value=#{text.eventos.invitar} />
+					</div>
+				</form>
+
+				<div class="card-footer">
+					<a class="btn btn-info btn-xs" href="javascript:history.back();"
+						title="back"><i class="fas fa-arrow-circle-left mx-2"></i><span
+						th:text=#{text.eventos.volver}></span></a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script th:replace="eventos/js/helper-form :: checkedUnchecked-form"></script>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

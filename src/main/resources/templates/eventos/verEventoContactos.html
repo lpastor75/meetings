@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container py-4">
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"></div>
+
+                <div class="card-body">
+                    <h4 class="card-titulo">
+                        <a th:href="@{/}" class="btn btn-light btn-xs">
+                            <i class="fas fa-angle-double-left" style="margin-right: 5px;"></i>
+                            <i class="fa fa-home fa-lg" style="margin-right: 5px; color: black;"></i>
+                            <span th:text="#{text.menu.home}"></span>
+                        </a>
+                    </h4>
+
+                    <ul class="list-group my-2">
+                        <li class="list-group-item list-group-item-primary" th:text="#{text.eventos.datosOrganizador}"></li>
+                        <li class="list-group-item" th:text="${eventoFinal.organizador.nombre + ' ' + eventoFinal.organizador.apellido }"></li>
+                        <li class="list-group-item" th:text="${eventoFinal.organizador.email}"></li>
+                    </ul>
+
+                    <ul class="list-group my-2">
+                        <li class="list-group-item list-group-item-success" th:text="#{text.eventos.cabeceraEvento}"></li>
+                        <li class="list-group-item" th:text="#{text.eventos.titulo} + ': ' + ${eventoFinal.titulo}"></li>
+                        <li class="list-group-item" th:text="#{text.eventos.descripcion} + ': ' + ${eventoFinal.descripcion}"></li>
+                    </ul>
+
+                    <h4 class="text-center my-4" style="font-weight: bold;" th:text="#{text.eventos.horarioDefinitivo}"></h4>
+
+                    <table class="table table-striped table-hover table-bordered my-3">
+                        <thead class="text-center table-success">
+                            <tr>
+                                <th th:text="#{text.eventos.fecha}"></th>
+                                <th th:text="#{text.eventos.duracion}"></th>
+                                <th th:text="#{text.eventos.horaInicio}"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td th:text="${#temporals.format(eventoFinal.horarioDefinitivo,'dd-MM-yyyy')}"></td>
+                                <td th:text="${eventoFinal.duracion} +' ' + #{text.eventos.duracion.horas}"></td>
+                                <td th:text="${#temporals.format(eventoFinal.horarioDefinitivo,'HH:mm')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="text-center my-4" style="font-weight: bold;" th:text="#{text.eventos.invitados}"></h4>
+
+                    <div class="table-responsive" style="height: 300px; margin-top: 30px; margin-bottom: 30px;">
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-inverse">
+                                <tr class="text-center table-success">
+                                    <th th:text="#{text.usuario.nombre}"></th>
+                                    <th th:text="#{text.usuario.apellido}"></th>
+                                    <th th:text="#{text.usuario.email}"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="participante : ${eventoFinal.invitados}">
+                                    <td class="text-center" th:text="${participante.nombre}"></td>
+                                    <td class="text-center" th:text="${participante.apellido}"></td>
+                                    <td class="text-center" th:text="${participante.email}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h5 th:text="#{text.salas.reservada} + ' ' + ${eventoFinal.sala.nombre}"></h5>
+                        <h6 th:text="#{text.salas.vacantes} + ' ' + ${vacantesSala}"></h6>
+
+                        <h4 class="text-center my-4" style="font-weight: bold;" th:text="#{text.contactos.invitar}"></h4>
+                    </div>
+                    <form th:action="@{/eventos/verEventoContactos-add}" name="formularioUsuarios" th:object="${eventoFinal}" method="post">
+                        <div class="float-right" style="margin-bottom: 10px;">
+                            <a class="btn btn-info btn-sm" style="margin-left: 10px; margin-right: 10px;" href="javascript:seleccionar_todo()" th:text="#{text.marcarTodos}"></a>
+                            <a class="btn btn-info btn-sm" href="javascript:deseleccionar_todo()" th:text="#{text.quitarTodos}"></a>
+                        </div>
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="hidden" th:field="*{vacantes}" id="vacantes" name="vacantes" />
+                        <div class="table-responsive" style="height: 300px; margin-top: 30px; margin-bottom: 30px;">
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-inverse">
+                                    <tr class="text-center table-success">
+                                        <th th:text="#{text.contactos.alias}"></th>
+                                        <th th:text="#{text.usuario.email}"></th>
+                                        <th th:text="#{text.eventos.seleccionar}"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="usuario2 : ${contactos}">
+                                        <td class="text-center" th:text="${usuario2.alias}"></td>
+                                        <td class="text-center" th:text="${usuario2.email}"></td>
+                                        <td class="text-center"><input type="checkbox" th:field="*{organizador.contactos}" th:value="${usuario2.id}" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center my-3">
+                            <input class="btn btn-success" type="submit" th:value="#{text.eventos.invitar}" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <a class="btn btn-info btn-xs" href="javascript:history.back();" title="back">
+                        <i class="fas fa-arrow-circle-left mx-2"></i>
+                        <span th:text="#{text.eventos.volver}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script th:replace="eventos/js/helper-form :: checkedUnchecked-form"></script>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

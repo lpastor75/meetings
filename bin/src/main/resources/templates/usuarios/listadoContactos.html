@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<div id="i18n_eliminar_contacto" th:text="#{text.eliminarContactoOk}" style="display: none;"></div>
+		<header th:replace="layout/layout :: header"></header>
+
+		<div class="container-fluid py-4">
+
+		<div class="card bg-light w-75" style=" margin-left: auto; margin-right: auto;">
+			<div class="card-header"> <h4 class="text-center" th:text="${titulo}" style="font-weight: bold;"></h4></div>
+			<div class="card-body">
+			
+			<div th:if="${#lists.isEmpty(usuario.contactos)}"
+					class="alert alert-info my-4"
+					th:text="#{text.alert.noContactos} +' ' + ${usuario.nombre}+' '+${usuario.apellido}">
+			</div>
+				<div th:if="${not #lists.isEmpty(usuario.contactos)}">
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr class="text-center table-info">
+							<th sec:authorize="hasRole('ROLE_USER')"><i class="fas fa-eye fa-lg"style="color:green;"></i><a class="mx-2" th:text="#{text.usuario.ver}"></a></th>
+							<th th:text="#{text.contactos.alias}"></th>
+							<th th:text="#{text.usuario.email}"></th>			
+							<th th:text="#{text.usuario.editar}"></th>
+						</tr>
+					</thead>
+					<tbody>					
+						<tr th:each="contacto: ${contactos}">
+							<td sec:authorize="hasRole('ROLE_USER')" class="text-center"><a class="btn btn-info btn-xs" 
+							th:href="@{/usuarios/verContacto/} + ${contacto.id}"><i class="fas fa-eye fa-lg"style="color:white;"></i></a></td>
+							
+							<td class="text-center" th:text="${contacto.alias}"></td>
+							<td class="text-center" th:text="${contacto.email}"></td>
+										
+							<td class="text-center">
+								<a class="btn btn-warning btn-xm"		 
+								th:href="@{/usuarios/registroContacto/} + ${contacto.id}"><i class="far fa-edit"></i></a>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+				
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				</div>
+				<h4 class="card-title">	
+				
+					<a class="btn btn-info btn-xs float-left" href="javascript:history.back();" title="back">
+							<i class="fas fa-arrow-circle-left mx-2"></i>
+							<span th:text="#{text.eventos.volver}"></span>
+					</a>
+					
+					<a class="btn btn-info btn-xm float-right" th:href="@{/usuarios/registroContacto}">
+							<i class="fas fa-plus-circle mx-2"></i>
+							<span th:text="#{text.contactos.add}"></span>
+					</a> 
+					
+				</h4>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

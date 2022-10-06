@@ -1,0 +1,158 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8" />
+<title th:if="${titulo != null}" th:text="'TW2020-' + ${titulo}"></title>
+<title th:if="${titulo == null}" th:text="TW2020"></title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.12.0/css/all-jsf.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/fullcalendar/2.2.5/fullcalendar.css"
+	th:href="@{/webjars/fullcalendar/2.2.5/fullcalendar.css}"
+	rel="stylesheet"></link>
+<link
+	href="http://cdn.jsdelivr.net/webjars/fullcalendar/2.2.5/fullcalendar.print.css"
+	th:href="@{/webjars/fullcalendar/2.2.5/fullcalendar.print.css}"
+	rel="stylesheet" media="print"></link>
+<link rel="stylesheet"
+	href="http//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
+
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="form-group row row justify-content-center"></div>
+	<div class="container-fluid py-4">
+		<div class="row justify-content-center">
+			<div class="card bg-light w-75">
+				<div class="card-header">
+					<h4 class="text-center" style="font-weight:bold;" th:text="${titulo}"></h4>
+				</div>
+				<div class="card-body">
+					<div th:object="${evento}">
+						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+							role="alert">
+							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+						</ul>
+					</div>
+
+					<form th:action="@{/eventos/registroEvento}" th:object="${evento}"	method="post">
+
+						<input type="hidden" th:field="*{id}" th:value="${evento.id}"
+							class="form-control" />
+
+						<div class="form-group row row justify-content-center">
+							<label class="col-sm-2 col-form-label text-right" th:text=#{text.eventos.titulo}></label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{titulo}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">
+								</small>
+							</div>
+						</div>
+						
+						<div class="form-group row row justify-content-center">
+							<label class="col-sm-2 col-form-label text-right" th:text=#{text.eventos.descripcion}></label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{descripcion}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('descripcion')}"
+									th:errors="*{descripcion}"> </small>
+							</div>
+						</div>
+						
+						<div class="form-group row row justify-content-center">
+							<label class="col-sm-2 col-form-label text-right" th:text=#{text.eventos.duracionEvento}></label>
+							<div class="col-sm-6" style="margin-top:8px;" >
+								<input type="radio" name="duracion" required id="valor1" th:field="*{duracion}" th:value=1 class="inline-block" style="margin-left: 10px; margin-right:10px;" th:errorclass="'form-control alert-danger'" th:text=#{text.eventos.duracion.unaHora} />
+								
+								<input type="radio" name="duracion" id="valor2" th:field="*{duracion}" th:value=2 class="inline-block" style="margin-left: 10px; margin-right:10px;" th:errorclass="'form-control alert-danger'" th:text=#{text.eventos.duracion.dosHoras} />
+								
+								<input type="radio" name="duracion" id="valor3" th:field="*{duracion}" th:value=3 class="inline-block" style="margin-left: 10px; margin-right:10px;" th:errorclass="'form-control alert-danger'" th:text=#{text.eventos.duracion.tresHoras} />
+								
+									 <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('duracion')}"
+									th:errors="*{duracion}"> </small>
+							</div>
+						</div>					
+						
+							<h5 class="text-center"	style="margin-top: 30px; margin-bottom: 30px; font-weight:bold;" th:text=#{text.eventos.posiblesHorarios}></h5>
+
+							<div class="form-group row row" id="dynamicInput" >	
+																		
+								<div class="col-sm-3" style="margin:0 auto;" >
+								 <a th:text=#{text.eventos.horarioUno}></a><br>
+
+	      <input type="datetime-local" th:field="*{horariosDisponibles[0].horarioFlow}" class="form-control" th:errorclass="'form-control alert-danger'" />
+	      <small class="form-text text-danger" th:if="${#fields.hasErrors('horariosDisponibles[0].horarioFlow')}" th:errors="*{horariosDisponibles[0].horarioFlow}"></small>
+								</div>
+								
+								<div class="col-sm-3" style="margin:0 auto;">
+								<a th:text=#{text.eventos.horarioDos}></a><br>
+									
+			<input type="datetime-local" th:field="*{horariosDisponibles[1].horarioFlow}" class="form-control" th:errorclass="'form-control alert-danger'" />
+	        <small class="form-text text-danger" th:if="${#fields.hasErrors('horariosDisponibles[1].horarioFlow')}" th:errors="*{horariosDisponibles[1].horarioFlow}"></small>								
+								</div>
+							
+							</div>
+						
+						<div class="form-group row row">
+
+							<div class="col-sm-6 text-right">
+
+								<a class="btn btn-info btn-xs text-white" id="btnAdd" type="button" onClick="addInput('dynamicInput');"
+									style="margin-left: 10px; margin-right: 10px"> <i
+									class="fas fa-plus-circle" style="margin-right: 5px;"></i> <span th:text=#{text.eventos.masHorario}></span>
+								</a>
+
+							</div>
+							<a class="btn btn-info btn-xs text-white" id="btnDel" type="button" onClick="deleteInput('dynamicInput');"
+								style="margin-left: 10px; margin-right: 10px"><i
+								class="fas fa-minus-circle" style="margin-right: 5px;"></i> <span th:text=#{text.eventos.menosHorario}></span>
+							</a>
+
+						</div>
+															
+								<div class="col-sm-3 my-4" style="margin:0 auto;">
+								 <a th:text="#{text.eventos.fechaTope}"></a><br>
+									
+			<input type="date" th:field="*{fechaLimite}" class="form-control" th:errorclass="'form-control alert-danger'" />
+	        <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaLimite')}" th:errors="*{fechaLimite}"></small>
+									
+								</div>		
+
+						<input type="hidden" th:field="*{id}" th:value="${evento.id}" class="form-control" />
+
+						<div class="form-group row row justify-content-center py-4">
+							<input type="submit" th:if="${evento.id==null}" th:value=#{text.formulario.validar} class="btn btn-primary" /> 
+							<input type="submit" th:if="${evento.id!=null}" th:value=#{text.formulario.editar} class="btn btn-success" />
+						</div>
+					
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+		<footer th:replace="layout/layout :: footer"></footer>
+		
+		
+		<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+		<script th:src="@{/webjars/font-awesome/5.12.0/js/all.min.js}"></script>
+		<script th:replace="eventos/js/helper-form :: dynamic-form"></script>
+		
+</body>
+</html>

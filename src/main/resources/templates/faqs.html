@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container-fluid py-4">
+            <div class="row justify-content-center">
+                <div class="card bg-light w-75">
+                    <div class="card-header">
+                        <h3 class="text-center" th:text="${titulo}"></h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-titulo">
+                            <a th:href="@{/}" class="btn btn-light btn-xs">
+                                <i class="fas fa-angle-double-left" style="margin-right: 5px;"></i><i class="fa fa-home fa-lg" style="margin-right: 5px; color: black;"></i> <span th:text="#{text.menu.home}"></span>
+                            </a>
+                        </h4>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item list-group-item-info" th:text="#{text.faqs.datosGenerales}" id="header-faqs"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta1}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta1}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta2}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta2}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta3}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta3}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta4}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta4}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item list-group-item-info" th:text="#{text.faqs.eventos}" id="header-faqs"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta5}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta5}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta6}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta6}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta7}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta7}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta8}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta8}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta9}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta9}"></li>
+                        </ul>
+
+                        <ul class="list-group my-2">
+                            <li class="list-group-item" th:text="#{text.faqs.pregunta10}" id="pregunta"></li>
+                            <li class="list-group-item" th:text="#{text.faqs.respuesta10}"></li>
+                        </ul>
+
+                        <div class="card-footer">
+                            <a class="btn btn-info btn-xs" href="javascript:history.back();" title="back">
+                                <i class="fas fa-arrow-circle-left mx-2"></i>
+                                <span th:text="#{text.eventos.volver}"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

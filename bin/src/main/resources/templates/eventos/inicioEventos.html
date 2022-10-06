@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container text-center">
+	
+  <div class="col-4 offset-4" id="event-ini">
+  <h2 th:text=#{text.menu.logo}></h2>
+  <div class="spinner-border text-muted"></div>
+  <div class="spinner-border text-primary"></div>
+  <div class="spinner-border text-success"></div>
+  <div class="spinner-border text-info"></div>
+  <div class="spinner-border text-warning"></div>
+  <div class="spinner-border text-danger"></div>
+  <div class="spinner-border text-secondary"></div>
+  <div class="spinner-border text-dark"></div>
+  <div class="spinner-border text-light"></div>
+  <h3 th:text=#{text.eventos.area}></h3>
+  </div>
+  <p>Desde aquí se gestionará todo lo relacionado con los eventos, ya sea como organizador o como invitado. </p>
+	</div>
+	
+	<div class="row" sec:authorize="hasAnyRole('ROLE_JEFE','ROLE_ADMIN')" style="margin-top:40px;">
+			
+		  <div class="col-md-2 offset-md-2">
+				<img th:src="@{/images/image23.jpg}" alt="" id="ev-ini">		
+		 </div>
+		
+			<div class="col-md-6">
+				<h4 th:text=#{text.zona.jefe}></h4>	
+				
+  						
+					<div class="d-flex p-3 text-white my-4 text-center" style="background-color:#CACCCD;">
+			
+			 			<div class="p-2 bg-secondary flex-fill">
+							<a th:href="@{/eventos/registroEvento}"	class="btn btn-warning btn-xs mx-2" data-toggle="tooltip" title="Crear evento" th:text="#{text.eventos.inicioEventos.nuevoEvento}"></a> 
+						</div>
+			
+						<div class="p-2 bg-secondary flex-fill">
+							<a th:href="@{/eventos/listadoEventos}" class="btn btn-info btn-xs mx-2" data-toggle="tooltip" title="Enviar invitaciones">
+								<span th:text="#{text.eventos.inicioEventos.invitaciones}"></span>
+								<span class="badge badge-warning" th:text="${misEventosInvitar != null}? ${misEventosInvitar.size()} : '0'"></span>
+							</a> 
+				 		</div>
+				
+						<div class="p-2 bg-secondary flex-fill">
+							<a th:href="@{/eventos/listadoEventosCreados}" class="btn btn-info btn-xs mx-2" th:text=#{text.eventos.inicioEventos.creados} data-toggle="tooltip" title="Eventos creados"></a>
+						</div>
+				
+					</div>	
+				
+			</div>
+		
+		</div>
+		
+		<div class="row" style="margin-top:40px;">	
+			
+			 <div class="col-md-2 offset-md-2">
+				<img th:src="@{/images/image27.jpg}" alt="" id="ev-ini">		
+		 </div>
+					
+				<div class="col-md-6">
+				<h4 th:text=#{text.zona.invitado}></h4>	
+				
+				<div class="d-flex p-3 text-white my-4 text-center" style="background-color:#CACCCD;">
+				
+					<div class="p-2 bg-secondary flex-fill">
+						<a th:href="@{/eventos/listadoEventosPendientes}" class="btn btn-info btn-xs mx-2" data-toggle="tooltip" title="Me invitaron"> 
+							<span th:text="#{text.eventos.inicioEventos.pendientes}"></span>
+							<span class="badge badge-warning" th:text="${listaMisEventos != null}? ${listaMisEventos.size()} : '0'"></span>
+						</a>
+					</div>
+					<div class="p-2 bg-secondary flex-fill">			
+						<a th:href="@{/eventos/listadoReuniones}" class="btn btn-info btn-xs mx-2" data-toggle="tooltip" title="Asistir al evento">
+							<span th:text="#{text.eventos.inicioEventos.asistir}"></span>
+							<span class="badge badge-warning" th:text="${misEventosFinales != null}? ${misEventosFinales.size()} : '0'"></span>
+						</a>
+					</div>			
+					<div class="p-2 bg-secondary flex-fill">
+						<a th:href="@{/eventos/listadoHistorico}"class="btn btn-info btn-xs mx-2" data-toggle="tooltip" title="Histórico"> 
+							<span th:text="#{text.eventos.inicioEventos.historico}"></span> 
+							<span class="badge badge-warning" th:text="${misEventosHistoricos != null}? ${misEventosHistoricos.size()} : '0'"></span>
+						</a>
+					</div>				
+			</div>
+			</div>	
+		</div>
+		
+		<div class="text-block text-center">
+			<img th:src="@{/images/calendar.jpeg}" alt="JLAMeeting" style="width: 50%;">
+		</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

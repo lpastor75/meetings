@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <div class="container-fluid">
+            <header th:replace="layout/layout :: header"></header>
+
+            <div class="container-fluid py-4">
+                <div class="row justify-content-center">
+                    <div class="card bg-light w-75">
+                        <div class="card-header">
+                            <h4 class="text-center" th:text="${titulo}"></h4>
+                        </div>
+                        <div class="card-body">
+                            <div th:object="${sala}">
+                                <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+                                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                </ul>
+                            </div>
+
+                            <form th:action="@{/salas/registroSala}" th:object="${sala}" method="post">
+                                <input type="hidden" th:field="*{id}" th:value="${sala.id}" class="form-control" />
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.usuario.nombre}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" th:field="*{nombre}" class="form-control" th:errorclass="'form-control alert-danger'" />
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.aforo}"></label>
+                                    <div class="col-sm-6">
+                                        <input
+                                            type="range"
+                                            th:field="*{aforo}"
+                                            id="capacidadInput"
+                                            name="capacidadInput"
+                                            min="5"
+                                            max="30"
+                                            th:value="${sala.aforo}"
+                                            oninput="capacidad.value=capacidadInput.value"
+                                            th:errorclass="'form-control alert-danger'"
+                                        />
+                                        <output id="capacidad" name="capacidad" for="capacidadInput" th:text="${sala.aforo}"></output>
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('aforo')}" th:errors="*{aforo}"> </small>
+                                    </div>
+                                </div>
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.streaming}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" th:field="*{streaming}" th:value="true" th:text="Si" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <input type="radio" th:field="*{streaming}" th:value="false" th:text="No" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('streaming')}" th:errors="*{streaming}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.wifi}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" th:field="*{wifi}" th:value="true" th:text="Si" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <input type="radio" th:field="*{wifi}" th:value="false" th:text="No" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('wifi')}" th:errors="*{wifi}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.grabacion}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" th:field="*{grabacion}" th:value="true" th:text="Si" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <input type="radio" th:field="*{grabacion}" th:value="false" th:text="No" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('grabacion')}" th:errors="*{grabacion}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.megafonia}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" th:field="*{megafonia}" th:value="true" th:text="Si" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <input type="radio" th:field="*{megafonia}" th:value="false" th:text="No" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('megafonia')}" th:errors="*{megafonia}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.presentacion}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" th:field="*{presentacion}" th:value="true" th:text="Si" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <input type="radio" th:field="*{presentacion}" th:value="false" th:text="No" class="col-sm-1 col-form-label" th:errorclass="'form-control alert-danger'" />
+
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('presentacion')}" th:errors="*{presentacion}"> </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row row justify-content-center">
+                                    <label class="col-sm-2 col-form-label" th:text="#{text.salas.apertura}"></label>
+                                    <div class="col-sm-6">
+                                        <input type="time" min="08:00" max="14:00" required th:field="*{apertura}" class="col-sm-3 col-form-label" th:errorclass="'form-control alert-danger'" />
+                                        <small class="form-text text-danger" th:if="${#fields.hasErrors('apertura')}" th:errors="*{apertura}"> </small>
+                                    </div>
+                                </div>
+
+                                <div th:fragment="formularioRegistro">
+                                    <div class="form-group row row justify-content-center">
+                                        <label class="col-sm-2 col-form-label" th:text="#{text.salas.cierre}"></label>
+                                        <div class="col-sm-6">
+                                            <input type="time" min="15:00" max="22:00" required th:field="*{cierre}" class="col-sm-3 col-form-label" th:errorclass="'form-control alert-danger'" />
+                                            <small class="form-text text-danger" th:if="${#fields.hasErrors('cierre')}" th:errors="*{cierre}"> </small>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row row justify-content-center py-4">
+                                        <input type="submit" th:if="${sala.id==null}" th:value="#{text.formulario.validar}" class="btn btn-primary" />
+                                        <input type="submit" th:if="${sala.id!=null}" th:value="#{text.formulario.editar}" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

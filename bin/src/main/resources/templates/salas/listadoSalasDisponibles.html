@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body onload="deseleccionar_todo()">
+	
+		<header th:replace="layout/layout :: header"></header>
+
+		<div class="container-fluid py-4">
+
+		<div class="card bg-light w-75" style="margin-left: auto; margin-right: auto;">
+			<div class="card-header"> <h4 class="text-center" th:text="${titulo}" style="font-weight:bold;"></h4></div>
+			<div class="card-body">
+			
+			<form th:action="@{/salas/listadoSalasDisponibles-add}"  name="formulariolistadoSalasDisponibles"  th:object="${eventoFinal}" method="post">
+			
+			<input type="hidden" th:field="*{id}" />
+			
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr class="text-center table-info">
+							<th><i class="fas fa-pencil-alt mx-2" style="color:green;"></i><span th:text="#{text.eventos.seleccionar}"></span></th>
+							<th th:text="#{text.usuario.nombre}"></th>
+							<th><i class="fas fa-user-friends"></i></th>
+							<th><i class="fas fa-podcast"></i></th>
+							<th><i class="fas fa-broadcast-tower"></i></th>
+							<th><i class="fas fa-video"></i></th>
+							<th><i class="fas fa-volume-up"></i></th>
+							<th><i class="fas fa-photo-video"></i></th>						
+							<th th:text="#{text.salas.apertura}"><i class="fas fa-hourglass-start mx-2"></i></th>
+							<th th:text="#{text.salas.cierre}"><i class="fas fa-hourglass-end mx-2"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+											
+						<tr th:each="sala: ${salasDisponibles}">
+							<td class="text-center"><input type="checkbox" th:field="*{salasDisponibles}" class="radio" th:value="${sala.id}"></td>
+													
+							<td th:text="${sala.nombre}"></td>
+							<td class="text-center" th:text="${sala.aforo}"></td>
+							<td class="text-center" th:if="${sala.streaming}" th:text="#{text.salas.si}"></td>
+							<td class="text-center" th:unless="${sala.streaming}" th:text="#{text.salas.no}"></td>
+							<td class="text-center" th:if="${sala.wifi}" th:text="#{text.salas.si}"></td>
+							<td class="text-center" th:unless="${sala.wifi}" th:text="#{text.salas.no}"></td>
+							<td class="text-center" th:if="${sala.grabacion}" th:text="#{text.salas.si}"></td>
+							<td class="text-center" th:unless="${sala.grabacion}" th:text="#{text.salas.no}"></td>
+							<td class="text-center" th:if="${sala.megafonia}" th:text="#{text.salas.si}"></td>
+							<td class="text-center" th:unless="${sala.megafonia}" th:text="#{text.salas.no}"></td>
+							<td class="text-center" th:if="${sala.presentacion}" th:text="#{text.salas.si}"></td>
+							<td class="text-center" th:unless="${sala.presentacion}" th:text="#{text.salas.no}"></td>
+							<td class="text-center" th:text="${#dates.format(sala.apertura, 'HH:mm')} + ' h'"></td>
+							<td class="text-center" th:text="${#dates.format(sala.cierre, 'HH:mm')} + ' h'"></td>				
+							
+						</tr>
+					</tbody>
+					
+				</table>
+				<div class="text-center my-3">
+				<input class="btn btn-success " type="submit" th:value="#{text.salas.elegir}"/>
+				</div>
+				</form>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script th:replace="eventos/js/helper-form :: DeseleccionarAlCargarSalas"></script>
+	 <script th:replace="eventos/js/helper-form :: CheckedOnlyOne-form"></script>
+</body>
+</html>

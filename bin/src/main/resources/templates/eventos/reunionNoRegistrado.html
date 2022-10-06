@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<link rel="stylesheet" th:href="@{/css/chat.css}" />
+<body>	
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+
+		<div class="card bg-light w-100 p-3">
+			<div class="card-header">
+				<h4 class="text-center" style="font-weight: bold;"
+					th:text="'Sala: ' + ${eventoFinalUser.sala.nombre}"></h4>
+				<div style="display: flex; justify-content: space-around">
+					<div
+						th:text="'Inicio de la reunión:  ' +${#temporals.format(eventoFinalUser.horarioDefinitivo,'dd-MM-yyyy HH:mm')}">
+					</div>
+					<br>
+
+					<div
+						th:text="'Final de la reunión:  ' + ${#temporals.format(eventoFinalUser.horarioDefinitivoFin,'dd-MM-yyyy HH:mm')}"
+						id="terminaReunion"></div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div hidden="hidden" th:value="${bandera}" id="bandera"></div>
+				<div hidden="hidden" th:value="${eventoFinal_id}"
+					id="eventoFinal_id"></div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-8">
+							<span> <a class="btn btn-info" data-toggle="tooltip"
+								th:text="${'Ver respositorio de archivos'}" target="_blank"
+								th:href="@{/eventos/repositorioArchivos/} + ${eventoFinal_id}"
+								onclick="return confirm('Vas a ver el respositorio de archivos');"></a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+	
+	<script th:replace="eventos/js/helper-form :: Finalizar-Reunion"></script>
+	<script th:replace="eventos/js/helper-form :: banderaNoRegistrado"></script>
+</body>
+</html>

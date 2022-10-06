@@ -1,0 +1,486 @@
+* {
+    box-sizing: inherit
+}
+
+html,
+body {
+    font-size: 16px;
+    font-family: "Proxima Nova Soft", serif;
+    line-height: 1.4em;
+    color: #656a72;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+span {
+
+    font-weight: 400;
+}
+
+html,
+html a {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+input {
+    background-image: none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: all .3s;
+}
+
+.card {
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card-header {
+    font-weight: bold;
+    font-family: "Perpetua";
+    font-size: 20px;
+}
+
+.card-header h3,
+h4 {
+    font-weight: bold;
+    font-family: "Perpetua";
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+/* ---------- ALIGN ---------- */
+
+.align {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ---------- GRID ---------- */
+
+.grid {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    width: 400px;
+}
+
+/* ---------- LOGIN ---------- */
+
+#login {
+    margin: 90px auto;
+}
+
+#login h2 {
+    background: #f95252;
+    border-radius: 20px 20px 0 0;
+    color: #fff;
+    font-size: 28px;
+    padding: 20px 26px;
+}
+
+#login h2 span[class*="fontawesome-"] {
+    margin-right: 14px;
+}
+
+#login fieldset {
+    background: #fff;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 26px;
+}
+
+#login fieldset p {
+    color: #808080;
+    margin-bottom: 14px;
+}
+
+#login fieldset p label {
+    font-weight: bold;
+}
+
+#login fieldset p:last-child {
+    margin-bottom: 0;
+}
+
+#login fieldset input {
+    border-radius: 3px;
+}
+
+#login fieldset input[type="text"],
+#login fieldset input[type="password"] {
+    background: #eee;
+    color: #777;
+    padding: 4px 10px;
+    width: 100%;
+}
+
+#login fieldset input[type="submit"] {
+    background: #33cc77;
+    color: #fff;
+    display: block;
+    margin: 40px auto 0;
+    padding: 4px 0;
+    width: 110px;
+}
+
+#login fieldset input[type="submit"]:hover {
+    background: #28ad63;
+}
+
+button.dropdown-item {
+    color: #aa2043;
+    font-weight: bold;
+    background-color: #a5fcf1;
+}
+
+a.dropdown-item {
+    color: #383838;
+    font-weight: bold;
+    background: #e6f9ff;
+}
+
+/* ---------- INICIO EVENTOS ---------- */
+
+#ini-eventos .btn {
+    width: 200px;
+    border-radius: 30px 30px 30px 30px;
+    background: #28ad63;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+/* FOOTER */
+
+.crocodile {
+    text-align: center;
+    margin: auto;
+}
+
+.crocodile>p {
+    color: #2b5535;
+}
+
+section {
+    padding: 30px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+#footer {
+    background: #00663c !important;
+}
+
+#footer .container {
+    height: 230px;
+}
+
+#footer h5 {
+    padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.social li {
+    padding: 3px 0;
+}
+
+#footer ul.social li a i {
+    margin-right: 5px;
+    font-size: 25px;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+#footer ul.social li:hover>a {
+    padding: 4px 0;
+    margin-right: 5px;
+    font-weight: 700;
+}
+
+#footer ul.social li a,
+#footer ul.quick-links li a {
+    color: #ffffff;
+}
+
+#footer ul.social li a:hover {
+    color: #eeeeee;
+}
+
+#footer ul.quick-links li {
+    padding: 3px 0;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+#footer ul.quick-links li:hover {
+    padding: 3px 0;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+#footer ul.quick-links li a i {
+    margin-right: 5px;
+}
+
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+#footer p>a:hover {
+
+    font-weight: 700;
+    color: yellow;
+}
+
+@media (max-width:767px) {
+    #footer h5 {
+        padding-left: 0;
+        border-left: transparent;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+.foot-span {
+    font-weight: bold;
+}
+
+/* FIN FOOTER */
+
+
+/*FAQS*/
+
+#header-faqs {
+    font-size: 16px;
+    font-family: "Lucida Bright";
+}
+
+#pregunta {
+    font-weight: bold;
+}
+
+/*Inicio*/
+
+.jumbotron {
+    background: #e6f9ff;
+}
+
+.jumbotron h1 {
+    color: #339933;
+    font-weight: bold;
+    font-size: 54px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.jumbotron h3 {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.jumbotron h4 {
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#img-ini {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+}
+
+#img-area {
+    height: 230px;
+}
+
+#imgReunion {
+    text-align: center;
+    height: 350px;
+}
+
+#penn {
+    font-family: Verdana, Geneva, sans-serif;
+    margin-top: 20px;
+    font-style: italic;
+    border: 1px solid;
+    border-top-style: dotted;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+}
+
+#quien {
+    margin-top: 60px;
+    color: #0052cc;
+    font-size: 40px;
+    font-family: monaco, Consolas, Lucida Console, monospace;
+}
+
+#ini {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px dotted blue;
+}
+
+.nav-function {
+    background: #e6f9ff;
+    margin-top: 2px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-style: italic;
+}
+
+#btn-register {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom:3px;
+}
+
+.alert {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#ev-ini {
+    height: 150px;
+}
+
+#zona-jefe {
+    margin-top: 40px;
+    border: 1px solid blue;
+    border-radius: 12px;
+    background: #e6f9ff;
+}
+
+#jefe-in-left {
+    background: #D5F3FE;
+    border-radius: 50px 0px 0px 50px;
+}
+
+#jefe-in-center {
+    background: #D5F3FE;
+}
+
+#jefe-in-right {
+    background: #D5F3FE;
+    border-radius: 0px 50px 50px 0px;
+}
+
+#jefe-out {
+    background: #66D3FA;
+    border-radius: 15px 15px 15px 15px;
+}
+
+#boton-eventos {
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+}
+
+#zona-invitado {
+    margin-top: 40px;
+    border: 1px solid green;
+    border-radius: 12px;
+    background: #e6ffe8;
+}
+
+#invitado-in-left {
+    background: #c8e6c9;
+    border-radius: 50px 0px 0px 50px;
+}
+
+#invitado-in-center {
+    background: #c8e6c9;
+}
+
+#invitado-in-right {
+    background: #c8e6c9;
+    border-radius: 0px 50px 50px 0px;
+}
+
+#invitado-out {
+    background: #a5d6a7;
+    border-radius: 15px 15px 15px 15px;
+}
+
+#event-ini {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-style: italic;
+    border: 1px solid;
+    border-top-style: dotted;
+    padding: 10px;
+    box-shadow: 5px 10px #383d87;
+    color: #000000;
+}
+
+#event-ini h2 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: oblique;
+}
+
+#event-ini h3 {
+    margin-top: 15px;
+    font-family: monaco, Consolas, Lucida Console, monospace;
+    font-weight: italic;
+    color: #008080;
+}
+
+#key {
+    font-weight: bold;
+}
+
+#jla-head {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 150px;
+}
+
+#fases {
+    margin-top: 60px;
+    color: #000000;
+    font-size: 30px;
+    font-family: monaco, Consolas, Lucida Console, monospace;
+}
+
+#schedule1 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+/* ERRORES */
+
+#error-pag {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/***********/

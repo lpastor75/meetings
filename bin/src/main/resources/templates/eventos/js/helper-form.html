@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<script type="text/javascript" th:fragment="dynamic-form">
+		let count = 2;
+		let max = 7;
+		let min = 2;
+
+		function addInput(divName) {
+
+			if (count == max) {
+
+				alert("Has alcanzado el tope máximo de " + count + " horarios");
+			} else {
+				let newdiv = document.createElement('div');
+				newdiv.classList.add('col-sm-3');
+				newdiv.style.margin = '0 auto';
+				newdiv.innerHTML = "Horario "
+						+ (count + 1)
+						+ '<br><input type="datetime-local" class="form-control" id="horarios1.horarioFlow" name="horariosDisponibles['+count+'].horarioFlow" value="horarios1.horarioFlow" type="datetime" />'
+						+ '<small class="form-text text-danger" th:if="${#fields.hasErrors(\'horariosDisponibles['
+						+ count
+						+ '].horarioFlow\')}" th:errors="*{horariosDisponibles['
+						+ count + '].horarioFlow}"></small>';
+
+				document.getElementById(divName).appendChild(newdiv);
+				count++;
+			}
+		}
+
+		function deleteInput(divname) {
+
+			if (count == min) {
+
+				document.getElementById('btnDel').disabled = true;
+				alert("Tiene que haber un mínimo de " + count + " horarios");
+			} else {
+				let item = document.getElementById(divname);
+				item.removeChild(item.lastElementChild);
+				count--;
+			}
+		}
+
+		//sleccionar todo del formulario de usuarios
+		function seleccionar_todo() {
+			for (i = 0; i < document.formularioUsuarios.elements.length; i++)
+				if (document.f1.elements[i].type == "checkbox")
+					document.f1.elements[i].checked = 1
+		}
+
+		//quitar todos
+		function deseleccionar_todo() {
+			for (i = 0; i < document.f1.elements.length; i++)
+				if (document.f1.elements[i].type == "checkbox")
+					document.f1.elements[i].checked = 0
+		}
+	</script>
+
+
+	<script type="text/javascript" th:fragment="checkedUnchecked-form">
+		//seleccionar todo del formulario de usuarios
+		function seleccionar_todo() {
+			for (i = 0; i < document.formularioUsuarios.elements.length; i++)
+				if (document.formularioUsuarios.elements[i].type == "checkbox")
+					document.formularioUsuarios.elements[i].checked = 1
+		}
+
+		//quitar todos
+		function deseleccionar_todo() {
+			for (i = 0; i < document.formularioUsuarios.elements.length; i++)
+				if (document.formularioUsuarios.elements[i].type == "checkbox")
+					document.formularioUsuarios.elements[i].checked = 0
+		}
+	</script>
+
+	<script type="text/javascript" th:fragment="CheckedOnlyOne-form">
+		//funcion para dejar simular radio button
+		$("input:checkbox").on('click', function() {
+			var $box = $(this);
+			if ($box.is(":checked")) {
+				var group = "input:checkbox[name='" + $box.attr("name") + "']";
+				$(group).prop("checked", false);
+				$box.prop("checked", true);
+			} else {
+				$box.prop("checked", false);
+			}
+		});
+	</script>
+
+	<script type="text/javascript" th:fragment="Comprobar-fechaTope">
+		//funcion para comprobar si la fechaTope ya ha pasado
+		var fechaTope1 = document.getElementById("fechaTope").innerHTML;
+		var fechaTope = fechaTope1.substring(32, 43);
+		var fecha = new Date(fechaTope);
+		var dia = fechaTope.substring(0, 2);
+		var mes = fechaTope.substring(3, 5);
+		var anno = fechaTope.substring(6, 10);
+		var todo = anno + "-" + mes + "-" + dia;
+		var fTope = new Date(todo);
+		var f1 = new Date();
+		function compareDate() {
+			if (f1 > fTope) {
+				document.getElementById("validarFechaTope").click();
+			}
+		}
+	</script>
+
+	<script type="text/javascript" th:fragment="Finalizar-Reunion">
+		//funcion para comprobar si la fechaTope ya ha pasado
+		var fechaTope1 = document.getElementById("terminaReunion").innerHTML;
+		//creo variable para recoger fecha de la vista
+		var fechaTope = fechaTope1.substring(22, 43);
+		var fecha = new Date(fechaTope);
+		var dia = fechaTope.substring(0, 2);
+		var mes = fechaTope.substring(3, 5);
+		var anno = fechaTope.substring(6, 10);
+		var hora = fechaTope.substring(11, 13);
+		var minutos = fechaTope.substring(14, 16);
+		var todo = anno + "-" + mes + "-" + dia + " " + hora + ":" + minutos;
+		var fTope = new Date(todo);
+		var f1 = new Date();
+		function compareDate() {
+			f1 = new Date();
+			console.log("esta es la fecha" + todo);
+			if (f1 >= fTope) {
+
+				setTimeout("document.location.href='/'");
+				alert("ha terminado la reunion");
+			}
+		}
+		window.setInterval(compareDate, 300);
+	</script>
+	<script type="text/javascript" th:fragment="bandera">
+		function comprobarBoolean() {
+			var texto = $('#eventoFinal_id').val();
+			$
+					.ajax({
+						type : "post",
+						url : "comprobarBandera",
+						dataType : "text",
+						data : {
+							eventoFinal_id : texto,
+						},
+						success : function(data) {
+							var voy = $('#bandera').html(data);
+							var valorBandera = document
+									.getElementById("bandera").innerHTML;
+							console.log(valorBandera);
+							if (valorBandera == "true") {
+								setTimeout("document.location.href='/'");
+								alert("ha terminado la reunion");
+							}
+
+						},
+						error : function(e) {
+							console.log("este es el id " + texto);
+							console.log("errorrr");
+						},
+					});
+
+		}
+		window.setInterval(comprobarBoolean, 300);
+	</script>
+<script type="text/javascript" th:fragment="banderaNoRegistrado">
+		function comprobarBoolean() {
+			var texto =  $('#eventoFinal_id').val();
+			$
+					.ajax({
+						type : "post",
+						url : "comprobarBanderaNoRegistrado",
+						dataType : "text",
+						data : {
+							eventoFinal_id : texto,
+						},
+						success : function(data) {
+							var voy = $('#bandera').html(data);
+							var valorBandera = document
+									.getElementById("bandera").innerHTML;
+							console.log(valorBandera);
+							if (valorBandera == "true") {
+								setTimeout("document.location.href='/'");
+								alert("ha terminado la reunion");
+							}
+
+						},
+						error : function(e) {
+							console.log("este es el id " + texto);
+							console.log("errorrr");
+						},
+					});
+
+		}
+		window.setInterval(comprobarBoolean, 300);
+	</script>
+	<script type="text/javascript"
+		th:fragment="DeseleccionarAlCargarHorario">
+		//quitar todos
+		function deseleccionar_todo() {
+			for (i = 0; i < document.formularioHorario.elements.length; i++)
+				if (document.formularioHorario.elements[i].type == "checkbox")
+					document.formularioHorario.elements[i].checked = 0
+		}
+	</script>
+
+	<script type="text/javascript" th:fragment="DeseleccionarAlCargarSalas">
+		//quitar todos
+		function deseleccionar_todo() {
+			for (i = 0; i < document.formulariolistadoSalasDisponibles.elements.length; i++)
+				if (document.formulariolistadoSalasDisponibles.elements[i].type == "checkbox")
+					document.formulariolistadoSalasDisponibles.elements[i].checked = 0
+		}
+	</script>
+
+</body>
+</html>

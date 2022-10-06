@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <meta charset="UTF-8" />
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container py-4"></div>
+
+        <div class="card bg-danger text-white text-center" style="margin-bottom: 50px;">
+            <div class="card-header" th:text="#{text.security.error.403.titulo}" id="error-pag"></div>
+            <div class="card-body">
+                <h5 class="card-title" th:text="#{text.security.error.sorry}+ ${#authentication.name} + #{text.security.error.403.permiso}"></h5>
+                <br />
+                <br />
+                <a th:href="@{/}" class="btn btn-outline-light" role="button" th:text="#{text.security.error.403.volver}"></a>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

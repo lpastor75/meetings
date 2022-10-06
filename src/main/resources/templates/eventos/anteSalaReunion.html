@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layoutComun :: header"></header>
+
+        <div class="container py-4">
+            <div class="card bg-light">
+                <div class="card-header" style="font-weight: bold;" th:text="#{text.antesala.titulo}"></div>
+
+                <div class="card-body">
+                    <h4 class="card-titulo">
+                        <a th:href="@{/}" class="btn btn-light btn-xs">
+                            <i class="fas fa-angle-double-left" style="margin-right: 5px;"></i><i class="fa fa-home fa-lg" style="margin-right: 5px; color: black;"></i>
+                            <span th:text="#{text.menu.home}"></span>
+                        </a>
+                    </h4>
+                    <ul class="list-group my-2">
+                        <li class="list-group-item list-group-item-primary" th:text="#{text.eventos.datosOrganizador}"></li>
+                        <li class="list-group-item" th:text="${eventoFinalUser.organizador.nombre + ' ' + eventoFinalUser.organizador.apellido }"></li>
+                        <li class="list-group-item" th:text="${eventoFinalUser.organizador.email}"></li>
+                    </ul>
+
+                    <ul class="list-group my-2">
+                        <li class="list-group-item list-group-item-success" th:text="#{text.eventos.cabeceraEvento}"></li>
+                        <li class="list-group-item" th:text="#{text.eventos.tituloEvento} + ${eventoFinalUser.titulo}"></li>
+                        <li class="list-group-item" th:text="#{text.eventos.descripcionEvento} + ${eventoFinalUser.descripcion}"></li>
+                    </ul>
+
+                    <label class="col text-center" th:text="#{text.formulario.username}" style="margin-top: 10px;"></label>
+
+                    <form th:action="@{/eventos/anteSalaReunion-comprobarAsistente}" th:object="${contacto}" method="post">
+                        <input type="hidden" th:value="${eventoFinal_id}" name="eventoFinalUser" id="eventoFinal_id" />
+                        <input th:field="*{email}" name="email" th:value="${contacto.email}" class="form-control" autofocus />
+
+                        <div class="text-center my-3">
+                            <button class="btn btn-success" type="submit" th:text="#{text.eventos.entrar}"></button>
+                        </div>
+                    </form>
+
+                    <div class="card-footer">
+                        <a class="btn btn-info btn-xs" href="javascript:history.back();" title="back"><i class="fas fa-arrow-circle-left mx-2"></i><span th:text="#{text.eventos.volver}"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

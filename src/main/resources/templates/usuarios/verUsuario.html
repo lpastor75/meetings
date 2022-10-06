@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="container py-4">
+            <div class="card bg-light w-75">
+                <div class="card-header text-center" id="detalle_usuario" th:text="${titulo}"></div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered float-right">
+                        <tr>
+                            <td th:text="#{text.formulario.username}" id="key"></td>
+                            <td th:text="${usuario.username}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.usuario.nombre}" id="key"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.usuario.apellido}" id="key"></td>
+                            <td th:text="${usuario.apellido}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.usuario.email}" id="key"></td>
+                            <td th:text="${usuario.email}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.formulario.poblacion}" id="key"></td>
+                            <td th:text="${usuario.poblacion}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.formulario.pais}" id="key"></td>
+                            <td th:text="${usuario.pais}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.formulario.telefono}" id="key"></td>
+                            <td th:text="${usuario.telefono}"></td>
+                        </tr>
+                    </table>
+
+                    <h4 class="card-title text-center">
+                        <a class="btn btn-info btn-xs float-left" href="javascript:history.back();" title="back"><i class="fas fa-arrow-circle-left mx-2"></i><span th:text="#{text.eventos.volver}"></span></a>
+                        <a class="btn btn-info btn-xm" style="margin-bottom:4px;" th:href="@{/usuarios/listadoContactos/} + ${usuario.id}"> <i class="fas fa-plus-circle mx-2"></i><span th:text="#{text.usuario.contactos}"></span> </a>
+                        <a class="btn btn-warning btn-xm float-right" th:href="@{/usuarios/registroUsuario/} + ${usuario.id}">
+                            <i class="far fa-edit mx-2"></i>
+                            <span th:text="#{text.formulario.editar}"></span>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

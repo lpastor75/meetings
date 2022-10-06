@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<link rel="stylesheet" th:href="@{/css/chat.css}" />
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+
+		<div class="card bg-light w-100 p-3">
+			<div class="card-header">
+				<h4 class="text-center" style="font-weight: bold;"
+					th:text="'Sala: ' + ${eventoFinalUser.sala.nombre}"></h4>
+				<div style="display: flex; justify-content: space-around">
+					<div
+						th:text="'Inicio de la reunión:  ' +${#temporals.format(eventoFinalUser.horarioDefinitivo,'dd-MM-yyyy HH:mm')}">
+					</div>
+					<br>
+
+					<div
+						th:text="'Final de la reunión:  ' + ${#temporals.format(eventoFinalUser.horarioDefinitivoFin,'dd-MM-yyyy HH:mm')}"
+						id="terminaReunion"></div>
+				</div>
+			</div>
+			<div class="card-body">
+
+				<div class="container">
+					<div class="row">
+						<div class="col-8">
+							<h3 class="bg-warning" th:text=#{text.reunion.archivos}></h3>
+						</div>
+						<div class="col text-center">
+							<h3 class="bg-warning" th:text=#{text.reunion.chat}></h3>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-8">
+							<div th:if="${not#lists.isEmpty(files)}">
+
+								<div th:each="archivo : ${files}">
+									<a th:href="${archivo.url}" th:text="${archivo.filename}"></a>
+								</div>
+							</div>
+
+							<div th:unless="${not#lists.isEmpty(files)}">
+								<div>
+									<h5 th:text=#{text.reunion.noArchivosAun}></h5>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col" id="chat-container">
+
+							<div class="chat-header">
+								<div class="user-container">
+									<input type="hidden" th:value="${eventoFinal_id}"
+										id="eventoFinal_id"> <input type="hidden"
+										th:value="${bandera}" id="bandera"> <span
+										id="username" th:utext="${username}"></span>
+								</div>
+
+								<div id="sustitucion"></div>
+								<h4 id="chat-titulo" th:text=#{text.reunion.chat.nombre}></h4>
+							</div>
+							<hr />
+
+							<div id="connecting" th:text=#{text.reunion.chat.conectando}></div>
+							<ul id="messageArea"></ul>
+							<form id="messageForm" name="messageForm">
+
+								<div class="input-message">
+									<input type="text" id="message" autocomplete="off"
+										placeholder="Escriba un mensaje..." />
+									<button type="submit" id="boton-chat"
+										th:text=#{text.reunion.chat.enviar}></button>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-8">
+							<h5 th:text=#{text.reunion.aportarArchivos}></h5>
+							<form class="md-form" method="POST"
+								th:action="@{/eventos/reunion-upload}"
+								enctype="multipart/form-data">
+
+								<input type="file" name="file" required /> <br /> <br /> <input
+									type="hidden" th:value="${eventoFinal_id}"
+									name="eventoFinalUser" id="eventoFinal_id">
+								<button class="btn btn-success" type="submit"
+									th:text=#{text.reunion.subir}></button>
+								<span> <a class="btn btn-info" data-toggle="tooltip"
+									th:text="${'Ver respositorio de archivos'}" target="_blank"
+									th:href="@{/eventos/repositorioArchivos/} + ${eventoFinal_id}"
+									onclick="return confirm('Vas a ver el respositorio de archivos');"></a>
+								</span>
+							</form>
+						</div>
+
+						<div class="col text-center">
+							<form th:action="@{/eventos/reunion-add}" name="finalizarReunion"
+								th:object="${eventoFinalUser}" method="post">
+								<input type="hidden" th:value="${eventoFinal_id}"
+									name="eventoFinalUser" id="eventoFinal_id"> <input
+									th:if="${eventoFinalUser.organizador.id == usuario.id}"
+									class="btn btn-success" type="submit" style="margin-top: 40px;"
+									th:value="#{text.eventos.finalizarReunion}"
+									id="finalizarReunion" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- https://cdnjs.com/libraries/sockjs-client -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<!-- https://cdnjs.com/libraries/stomp.js/ -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script th:replace="eventos/js/helper-form :: Finalizar-Reunion"></script>
+	<script th:replace="eventos/js/helper-form :: bandera"></script>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

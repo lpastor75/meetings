@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="layout/layout :: head"></head>
+<body>
+	
+		<header th:replace="layout/layout :: header"></header>
+		
+		<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header text-center" style="font-weight:bold; font-size: 1.3rem;" id="detalle_sala" th:text="${titulo}"></div>
+			<div class="card-body">
+				
+				<img class="img-thumbnail rounded float-left"
+					style="max-width: 25%;" th:src="@{/images/image28.jpg}" th:alt="Imagen"/>
+
+				<table style="max-width:70%" class="table table-striped table-bordered float-right">
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.usuario.nombre}"></td>
+						<td th:text="${sala.nombre}"></td>
+					</tr>
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.aforo}"></td>
+						<td th:text="${sala.aforo}"></td>
+					</tr>
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.streaming}"></td>
+						<td th:if="${sala.streaming}" th:text="#{text.salas.si}"></td>
+						<td th:unless="${sala.streaming}" th:text="#{text.salas.no}"></td>
+					</tr>
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.wifi}"></td>
+						<td th:if="${sala.wifi}" th:text="#{text.salas.si}"></td>
+						<td th:unless="${sala.wifi}" th:text="#{text.salas.no}"></td>
+					</tr>
+					
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.grabacion}"></td>
+						<td th:if="${sala.grabacion}" th:text="#{text.salas.si}"></td>
+						<td th:unless="${sala.grabacion}" th:text="#{text.salas.no}"></td>
+					</tr>
+					
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.megafonia}"></td>
+						<td th:if="${sala.megafonia}" th:text="#{text.salas.si}"></td>
+						<td th:unless="${sala.megafonia}" th:text="#{text.salas.no}"></td>
+					</tr>
+					
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.presentacion}"></td>
+						<td th:if="${sala.streaming}" th:text="#{text.salas.si}"></td>
+						<td th:unless="${sala.streaming}" th:text="#{text.salas.no}"></td>
+					</tr>
+					
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.apertura}"></td>
+						<td th:text="${#dates.format(sala.apertura, 'HH:mm')} + ' h'"></td>
+					</tr>
+					
+					<tr>
+						<td style="font-weight:bold;" th:text="#{text.salas.cierre}"></td>
+						<td th:text="${#dates.format(sala.cierre, 'HH:mm')} + ' h'"></td>
+					</tr>
+				
+				</table>
+				
+			</div>
+			
+			<div class="card-footer">
+				<a class="btn btn-info btn-xs float-left" href="javascript:history.back();" title="back">
+							<i class="fas fa-arrow-circle-left mx-2"></i>
+							<span th:text="#{text.eventos.volver}"></span>
+					</a>
+			</div>
+			
+		</div>
+
+	</div>
+		
+		<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

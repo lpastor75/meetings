@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <div id="i18n_editar_usuario" th:text="#{text.usuarios.editarConfirm}" style="display: none;"></div>
+        <div class="container-fluid">
+            <header th:replace="layout/layout :: header"></header>
+
+            <div class="container-fluid py-4">
+                <div class="card bg-light w-75">
+                    <div class="card-header">
+                        <h4 class="text-center" th:text="${titulo}"></h4>
+                    </div>
+                    <div class="card-body">
+                        <div th:object="${usuario}">
+                            <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                            </ul>
+                        </div>
+
+                        <form th:action="@{/usuarios/registroUsuario}" th:object="${usuario}" method="post">
+                            <input type="hidden" th:field="*{id}" th:value="${usuario.id}" class="form-control" />
+                            <div th:replace="layout/layout :: formularioRegistro"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

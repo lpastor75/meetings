@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="jumbotron text-center">
+            <h1 th:text="#{text.inicio.jla}"></h1>
+            <h3 th:text="#{text.inicio.cabecera}"></h3>
+        </div>
+        <div class="container-fluid" id="init">
+            <div class="row justify-content-md-center">
+                <div class="col-xs-4"><img th:src="@{/images/image20.jpg}" alt="" id="img-ini" /></div>
+                <div class="col-xs-4"><img th:src="@{/images/image8.jpg}" alt="" id="img-ini" /></div>
+                <div class="col-xs-4"><img th:src="@{/images/image14.jpg}" alt="" id="img-ini" /></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h5 class="text-center" th:text="#{text.inicio.tiempo}" id="penn"></h5>
+        </div>
+
+        <div class="container text-center">
+            <h4 th:text="#{text.inicio.quien}" id="quien"></h4>
+            <div class="row" id="ini">
+                <div><img th:src="@{/images/image3.jpg}" alt="" id="img-ini" /></div>
+
+                <div><img th:src="@{/images/image12.jpg}" alt="" id="img-ini" /></div>
+                <p th:text="#{text.inicio.descripcion}"></p>
+            </div>
+        </div>
+
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

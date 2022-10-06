@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container-fluid py-4">
+
+		<div class="card bg-light w-75" style="margin-left: auto; margin-right: auto;">
+			<div class="card-header">
+				<h4 class="text-center" th:text="${titulo}" style="font-weight: bold;"></h4>
+			</div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a sec:authorize="hasRole('ROLE_ADMIN')"
+						th:href="@{/usuarios/registroUsuario}"
+						class="btn btn-primary btn-xs" th:text="#{text.menu.nuevoJefe}"></a>
+				</h4>
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr class="text-center table-info">
+							<th sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"><i
+								class="fas fa-eye fa-lg" style="color: green;"></i><a class="mx-2" th:text="#{text.usuario.ver}"></a></th>
+							<th th:text="#{text.usuario.nombre}"></th>
+							<th th:text="#{text.usuario.apellido}"></th>
+							<th th:text="#{text.usuario.email}"></th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{text.usuario.addRole}"></th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{text.usuario.editar}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="usuario: ${usuarios}">
+							<td sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"
+								class="text-center"><a class="btn btn-info btn-xs"
+								th:href="@{/usuarios/verUsuario/} + ${usuario.id}"><i class="fas fa-eye fa-lg" style="color: white;">
+								</i></a></td>
+							<td class="text-center" th:text="${usuario.nombre}"></td>
+							<td class="text-center" th:text="${usuario.apellido}"></td>
+							<td class="text-center" th:text="${usuario.email}"></td>
+
+							<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center"
+								th:if="${usuario.isJefe==true}"><a
+								class="btn btn-info btn-xm disabled"
+								th:href="@{/usuarios/addRoleJefe/} + ${usuario.id}"><i
+									class="far fa-edit"></i> </a></td>
+
+							<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center"
+								th:unless="${usuario.isJefe==true}"><a
+								class="btn btn-info btn-xm active"
+								th:href="@{/usuarios/addRoleJefe/} + ${usuario.id}"><i
+									class="far fa-edit"></i> </a></td>
+
+							<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center">
+								<a class="btn btn-warning btn-xm"
+								th:href="@{/usuarios/registroUsuario/} + ${usuario.id}"><i
+									class="far fa-edit"></i></a>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+				
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>
