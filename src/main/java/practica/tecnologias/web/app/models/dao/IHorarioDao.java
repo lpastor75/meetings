@@ -6,7 +6,7 @@ import practica.tecnologias.web.app.models.entity.Horario;
 /**
  * Interface IHorarioDao.
  * 
- * @author Alumno 1, Alumno 2, ALumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public interface IHorarioDao extends JpaRepository<Horario,Long>{

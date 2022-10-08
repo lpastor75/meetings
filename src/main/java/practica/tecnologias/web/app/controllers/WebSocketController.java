@@ -15,7 +15,7 @@ import practica.tecnologias.web.app.models.service.IEventoFinalService;
  * Clase controladora de los webSockets, que es la tecnología que se utiliza para gestionar 
  * el chat en el que interactuan los usuarios en la celebración de los eventos.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Controller

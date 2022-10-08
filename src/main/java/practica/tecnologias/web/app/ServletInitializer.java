@@ -4,9 +4,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
- * Clase ServletInitializer, encargada de ejectutar el WAR.
+ * Clase ServletInitializer, encargada de ejectutar el archivo .war
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class ServletInitializer extends SpringBootServletInitializer {
@@ -19,7 +19,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	 */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(PracticaTw20192020Application.class);
+		return application.sources(CorporateMeeting.class);
 	}
 
 }

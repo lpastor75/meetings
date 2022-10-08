@@ -15,7 +15,7 @@ import practica.tecnologias.web.app.models.service.IUploadFileService;
 /**
  * Clase Controladora encargada de las peticiones Ajax que hay en el Frontend.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @RequestMapping("/eventos/reunion")

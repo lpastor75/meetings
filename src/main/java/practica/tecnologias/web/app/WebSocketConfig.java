@@ -12,7 +12,7 @@ import practica.tecnologias.web.app.interceptor.HttpHandshakeInterceptor;
 /**
  * Clase encargada de la configuración de los webSockets necesarios para el chat.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Configuration

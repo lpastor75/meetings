@@ -3,7 +3,7 @@ package practica.tecnologias.web.app.exceptions;
 /**
  * Clase encargada de las posibles excepciones en tiempo de ejecución relacionadas con la subida de archivos durante la celebración de los eventos.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class FileStorageException extends RuntimeException {

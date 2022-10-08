@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Clase de la entidad Contacto. Cada usuario tiene los suyos, puediendo ser invitados a participar en los eventos.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

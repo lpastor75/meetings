@@ -35,7 +35,7 @@ import practica.tecnologias.web.app.models.service.IUsuarioService;
  * Clase controladora del EventoFinal, engargada de gestionar aquellos eventos que ya están totalmente configurados 
  * para poder ser celebrados.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @SessionAttributes("eventoFinal")

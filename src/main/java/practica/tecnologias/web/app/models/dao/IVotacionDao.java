@@ -10,7 +10,7 @@ import practica.tecnologias.web.app.models.entity.Votacion;
 /**
  * Interface IVotacionDao.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public interface IVotacionDao extends JpaRepository<Votacion, Long> {

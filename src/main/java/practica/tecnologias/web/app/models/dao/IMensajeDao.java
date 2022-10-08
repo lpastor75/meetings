@@ -10,7 +10,7 @@ import practica.tecnologias.web.app.models.entity.Mensaje;
 /**
  * Interface IMensajeDao.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public interface IMensajeDao extends JpaRepository<Mensaje, Long> {

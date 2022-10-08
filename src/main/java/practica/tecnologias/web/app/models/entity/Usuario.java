@@ -26,7 +26,7 @@ import javax.validation.constraints.NotEmpty;
 /**
  * Clase entidad del Usuario. Interactuan con la aplicación.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

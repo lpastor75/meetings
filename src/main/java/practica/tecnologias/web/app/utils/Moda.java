@@ -8,7 +8,7 @@ import practica.tecnologias.web.app.models.entity.Votacion;
  * Clase de utilidad encargada de calcular la moda de los horarios (horario más votado). Se utiliza para conocer el horario definitivo
  * en el que se celebrará el evento, teniendo en cuenta las preferencias de los invitados a dicho evento.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class Moda {

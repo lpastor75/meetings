@@ -38,7 +38,7 @@ import practica.tecnologias.web.app.utils.paginator.PageRender;
 /**
  * Clase controladora de los usuarios del sistema, encargada de gestionar cualquier interacción con ellos en la aplicación.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Controller

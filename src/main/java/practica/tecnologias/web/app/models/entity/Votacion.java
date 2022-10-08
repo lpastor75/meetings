@@ -12,7 +12,7 @@ import javax.persistence.UniqueConstraint;
  * Clase Entidad Votacion que representa los votos de los usuarios sobre sus preferencias respecto a la fecha y 
  * el horario de los eventos.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Table(name = "votaciones", uniqueConstraints = {@UniqueConstraint(columnNames = {"evento_id", "invitado_id"})})

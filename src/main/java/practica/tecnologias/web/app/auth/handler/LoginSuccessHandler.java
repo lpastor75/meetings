@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.SessionFlashMapManager;
 /**
  * Clase encargada de la configuración de la autenticación cuando el usuario se loguea.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Component

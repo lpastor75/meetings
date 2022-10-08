@@ -23,7 +23,7 @@ import practica.tecnologias.web.app.models.entity.FileModel;
 /**
  * Clase de servicio para el manejo de las funcionalidades de subir archivos que implementa la interface IUploadFileService.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Service

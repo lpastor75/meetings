@@ -44,7 +44,7 @@ import practica.tecnologias.web.app.utils.paginator.PageRender;
  * Clase controladora de todo lo relacionado con las salas, que es el lugar donde tienen lugar las
  * reuniones.
  *  
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Controller

@@ -6,7 +6,7 @@ import practica.tecnologias.web.app.models.entity.Usuario;
 /**
  * Interface IUsuarioDao.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public interface IUsuarioDao extends JpaRepository<Usuario, Long> {

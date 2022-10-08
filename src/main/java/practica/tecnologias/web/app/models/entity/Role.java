@@ -13,7 +13,7 @@ import javax.persistence.UniqueConstraint;
  * Clase entidad Role. Roles que pueden ser asociados con los usuarios registrados en la aplicación. 
  * Cada Role concede una serie de privilegios a los usuarios.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

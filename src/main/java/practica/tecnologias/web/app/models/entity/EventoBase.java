@@ -23,9 +23,9 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Clase abstracta de la entidad EventoBase (utilizada para solucionar ManytoMany en Hibernate), 
- * que es la clase abstracta de donde heredan la clase evento y eventoFinal .
+ * que es la clase abstracta de donde heredan la clase evento y eventoFinal.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

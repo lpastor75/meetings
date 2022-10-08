@@ -17,7 +17,7 @@ import practica.tecnologias.web.app.models.entity.ChatMessage;
  * implementa esta interfaz, y el objeto creado con esa clase está registrado con un componente usando el
  * método addWebSocketEventListener del componente. Cuando el evento webSocketEvent ocurre, ese objeto invoca dicho método.
  *
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Component

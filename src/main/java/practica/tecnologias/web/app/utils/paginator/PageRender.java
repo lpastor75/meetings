@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
  * Clase de utilidad para lograr una mejor presentación de una página que contiene muchos items y 
  * estos no pueden ser mostrados al mismo tiempo.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  * @param<T> Tipo genérico
  */

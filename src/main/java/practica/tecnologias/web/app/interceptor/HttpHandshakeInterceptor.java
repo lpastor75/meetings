@@ -16,7 +16,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 /**
  * Clase interceptora HttpHandshakeInterceptor, relacionada con los webSockets utilizados en el Chat.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Component

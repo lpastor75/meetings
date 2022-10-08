@@ -15,7 +15,7 @@ import javax.persistence.Table;
 /**
  * Clase de la entidad Agenda, relacionada con las salas y su disponibilidad para celebrar un evento.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

@@ -19,7 +19,7 @@ import practica.tecnologias.web.app.models.entity.Usuario;
  * Clase de servicio para el manejo de las funcionalidades de Usuarios que implenta
  * la interfaz IUsuarioService.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Service

@@ -3,7 +3,7 @@ package practica.tecnologias.web.app.models.entity;
 /**
  * Clase de la entidad Chat (mensajes enviados en el chat).
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class ChatMessage {

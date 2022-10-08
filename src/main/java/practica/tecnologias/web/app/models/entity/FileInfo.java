@@ -3,7 +3,7 @@ package practica.tecnologias.web.app.models.entity;
 /**
  * Clase FileInfo donde se guarda la informacion de los archivos que pueden ser aportados a una reunión.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class FileInfo {

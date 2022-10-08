@@ -12,7 +12,7 @@ import practica.tecnologias.web.app.models.entity.Usuario;
 /**
  * Clase Servicio de E-Mail, encargada de enviar un e-mail informativo al usuario cuando éste vota por un horario.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Service("emailService")

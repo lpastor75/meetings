@@ -15,7 +15,7 @@ import practica.tecnologias.web.app.models.service.JpaUserDetailsService;
 /**
  * Clase de configuración encargada de la seguridad y de la administración de credenciales de los usuarios de la aplicación.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @EnableGlobalMethodSecurity(securedEnabled = true)

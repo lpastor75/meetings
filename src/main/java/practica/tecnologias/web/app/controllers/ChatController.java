@@ -44,7 +44,7 @@ import practica.tecnologias.web.app.models.service.IUsuarioService;
  * Clase encargada de controlar lo relativo al chat y a la reunión, tanto para usuarios registrados 
  * como para usuarios no registrados.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Controller

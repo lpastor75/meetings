@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Clase entidad Horario.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

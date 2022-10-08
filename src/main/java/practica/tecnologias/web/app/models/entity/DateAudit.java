@@ -12,7 +12,7 @@ import java.time.Instant;
 /**
  * Clase abstracta DateAudit para auditar los archivos que son subidos durante una reunión.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @MappedSuperclass

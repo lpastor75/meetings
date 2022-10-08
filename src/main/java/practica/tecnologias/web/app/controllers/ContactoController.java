@@ -34,7 +34,7 @@ import practica.tecnologias.web.app.utils.paginator.PageRender;
 /**
  * Clase controladora encargada de gestionar todo lo relacionado con los contactos de los usuarios.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Controller

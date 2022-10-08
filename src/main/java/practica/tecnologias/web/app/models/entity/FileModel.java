@@ -12,7 +12,7 @@ import javax.persistence.Table;
 /**
  * Clase entidad FileModel encargada de guardar los archivo subidos durante una reunión en la BBDD.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Entity

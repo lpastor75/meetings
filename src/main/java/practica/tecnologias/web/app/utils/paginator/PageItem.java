@@ -3,7 +3,7 @@ package practica.tecnologias.web.app.utils.paginator;
 /**
  * Clase de utilidad para crear un paginador de los distintos tipos de elementos.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 public class PageItem {

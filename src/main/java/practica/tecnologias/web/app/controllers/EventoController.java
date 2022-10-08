@@ -46,7 +46,7 @@ import practica.tecnologias.web.app.utils.paginator.PageRender;
 /**
  * Clase que se encarga de controlar todo lo relacionado con los eventos en la fase inicial de creación.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @SessionAttributes("evento") 
