@@ -42,8 +42,8 @@ public class EmailService {
 
 		this.to = usuario.getEmail();
 		this.subject = "Has votado en el evento: " + evento.getTitulo();
-		this.body = "Buenas " + usuario.getNombre() + "\n\n Has votado la Hora " + horario.getHorarioFlow() +
-			" para el evento de la cabecera";
+		this.body = "Hola " + usuario.getNombre() + ".\n\nHas votado " + horario.getHorarioFlow() +
+			" como horario de inicio para el evento de la cabecera.";
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(to);
 		message.setSubject(subject);

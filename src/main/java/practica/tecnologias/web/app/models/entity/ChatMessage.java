@@ -8,6 +8,9 @@ package practica.tecnologias.web.app.models.entity;
  */
 public class ChatMessage {
 
+	/** The ChatMessage id. */
+	private Long chatMessage_id;
+	
 	/** The type. */
 	private MessageType type;
 
@@ -30,7 +33,27 @@ public class ChatMessage {
 		/** The join. */
 		JOIN,
 		/** The leave. */
-		LEAVE
+		LEAVE,
+		/** The delete. */
+		DELETE
+	}
+	
+	/**
+	 * Gets the chatMessage id
+	 * 
+	 * @return the chatMessage_id
+	 */
+	public Long getChatMessage_id() {
+		return chatMessage_id;
+	}
+
+	/**
+	 * Sets the chatMessage id
+	 * 
+	 * @param chatMessage_id the new chatMessage_id
+	 */
+	public void setChatMessage_id(Long chatMessage_id) {
+		this.chatMessage_id = chatMessage_id;
 	}
 
 	/**

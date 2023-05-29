@@ -15,7 +15,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 /**
  * Clase encargada de definir métodos de devolución de llamada para personalizar la configuración basada en Java para Spring MVC.
  * 
- * @author Alumno 1, Alumno 2, Alumno 3
+ * @author Luis Pastor y José Gilarte
  * @version Junio 2020
  */
 @Configuration

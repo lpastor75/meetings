@@ -11,7 +11,7 @@ body {
 }
 
 .nickname {
-    color: blue;
+    /*color: #0000dd;*/
     margin-right: 15px;
 }
 
@@ -37,18 +37,19 @@ body {
 }
 
 #chat-container {
-	position: relative;
-    height: 100%;
+	position: relative;   
     border: 2px solid #d5dbdb;
-    background-color: #b3ecf7;
+    /*background-color: #b3ecf7;*/
+    background-color: #34b5cb;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.45);
+    margin:auto;
     margin-top: 20px;
     margin-left: auto;
     margin-right: 15px;
-    width: 350px;
-    max-width: 380px;
-    height: 300px;
-    max-height: 600px;
-    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 420px;
+    max-height: 600px;*/
 }
 
 #chat-container ul {
@@ -67,9 +68,16 @@ body {
 
 #chat-container ul li {
     line-height: 1.5rem;
-    padding: 10px 15px;
+    padding: 10px 12px;
     margin: 0;
     border-bottom: 1px solid #f4f4f4;
+}
+
+.time-message {
+    font-size: 12px;
+    padding: 0 20px;
+    margin: 0;
+    color: #2d2d2d;
 }
 
 #chat-container ul li p {
@@ -86,6 +94,11 @@ body {
     color: #777;
     font-size: 14px;
     word-wrap: break-word;
+}
+
+#chat-container .delete-message {
+    position: relative;
+    color: #cd211d;
 }
 
 #chat-container .chat-message {

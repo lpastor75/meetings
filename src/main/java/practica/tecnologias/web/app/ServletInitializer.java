@@ -4,7 +4,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
- * Clase ServletInitializer, encargada de ejectutar el archivo .war
+ * Clase ServletInitializer, encargada de ejectutar el WAR.
  * 
  * @author Luis Pastor y José Gilarte
  * @version Junio 2020

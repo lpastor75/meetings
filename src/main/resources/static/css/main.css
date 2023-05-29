@@ -311,7 +311,13 @@ section .section-title {
 #img-ini {
     width: 100%;
     max-width: 300px;
-    height: 300px;
+    height: auto;
+}
+
+.vertical-center {
+  	display: flex;
+  	align-items: center;
+  	height: auto;
 }
 
 #img-area {
@@ -320,7 +326,7 @@ section .section-title {
 
 #imgReunion {
     text-align: center;
-    height: 350px;
+    height: auto;
 }
 
 #penn {

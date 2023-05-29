@@ -41,7 +41,24 @@ public class WebSocketController {
 			mensaje.setUsername(chatMessage.getSender());
 			mensaje.setEventoFinal_id(chatMessage.getEvento_id());
 			eventoFinalService.saveMensaje(mensaje);
+			chatMessage.setChatMessage_id(mensaje.getId());
 		}
+		return chatMessage;
+	}
+	
+	/**
+	 * Delete message.
+	 *
+	 * @param chatMessage the chat message
+	 * @return the chat message
+	 */
+	@MessageMapping("/chat.deleteMessage")
+	@SendTo("/topic/publicChatRoom")
+	public ChatMessage deleteMessage(@Payload ChatMessage chatMessage) {
+
+		Mensaje mensaje = eventoFinalService.findMensajeById(chatMessage.getChatMessage_id());
+		eventoFinalService.deleteMensaje(mensaje);
+		
 		return chatMessage;
 	}
 
